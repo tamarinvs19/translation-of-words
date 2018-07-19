@@ -1,0 +1,19 @@
+Mission
+  PROPERTIES
+    count_of_words (20)
+    list_of_words --spec_fuct
+    step (0)
+    result
+    lang 
+    mode (режим - выбор\набор\одно из)
+     --
+    player
+     --
+
+
+  FUNCTIONS
+    give_next_word
+    check_answer
+
+MissionToPlayer
+
