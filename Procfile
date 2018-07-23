@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn translation_project.wsgi
+web: run-program waitress-serve --port=$PORT settings.wsgi:application
