@@ -1,7 +1,9 @@
 Pycharm
-.idea
+*.idea
 Vim
-.swp
+*.swp
+
+*.pyc
 
 secrets
 staticfiles
