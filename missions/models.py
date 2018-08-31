@@ -22,7 +22,7 @@ class Mission(models.Model):
     lang = models.TextField(default='ru')
     mode = models.TextField(default='select')
 
-    dictionary = models.TextField(default='workbook')
+    dictionary = models.TextField(default='IT')
 
     @property
     def list_of_words(self):

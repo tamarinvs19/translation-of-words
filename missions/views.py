@@ -46,7 +46,6 @@ def menu(request):
         if form.is_valid():
             lang = form.cleaned_data['lang']
             count_of_words = form.cleaned_data['count_of_words']
-            #mode = form.cleaned_data['mode']
             dictionary = form.cleaned_data['dictionary']
 
             mission = Mission.objects.create(lang=lang,
@@ -62,7 +61,7 @@ def menu(request):
             return HttpResponseRedirect(addr, context)
     else:
         form = MissionForm(
-            {'lang': 'ru', 'count_of_words': 20, 'dictionary': 'IT'})
+            {'lang': 'ru', 'count_of_words': 20})
 
     return render(request, 'menu.html', {'form': form})
 
