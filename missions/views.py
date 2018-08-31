@@ -60,7 +60,7 @@ def menu(request):
             #return render(request, 'mission.html', context)
             return HttpResponseRedirect(addr, context)
     else:
-        form = MissionForm({'lang':'ru', 'count_of_words': 20})
+        form = MissionForm({'lang':'ru', 'count_of_words': 20, 'dictionary':'workbook'})
 
     return render(request, 'menu.html', {'form': form})
 
