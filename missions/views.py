@@ -28,7 +28,7 @@ log.basicConfig(
 
 
 def generate_words(mission):
-    with open('dict.csv', 'r') as d:
+    with open(str(mission.dictionary) + '.csv', 'r') as d:
         r = csv.reader(d)
         dicts = []
         for row in r:
@@ -46,9 +46,12 @@ def menu(request):
             lang = form.cleaned_data['lang']
             count_of_words = form.cleaned_data['count_of_words']
             #mode = form.cleaned_data['mode']
+            dictionary = form.cleaned_data['dictionary']
 
             mission = Mission.objects.create(lang=lang,
-                                             count_of_words=count_of_words,)
+                                             count_of_words=count_of_words,
+                                             dictionary=dictionary,
+                                             )
             mission.save()
             generate_words(mission)
             mission.save()

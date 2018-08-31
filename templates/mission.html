@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Mission</title>
-    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'radio_style.css' %}" />
-    {% csrf_token %}
-</head>
-<body>
-    <script>
-        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
-            }
-        });
-
-        function testAnswer() {
-            $.post({
-                url: 'ajax/check_answer/',
-                data: {
-			'answer': $("input:radio[name='answer']:checked").attr('id'),
-			},
-                dataType: 'json',
-                success:
-                    function (data) {
-                        console.info('Right answer...');
-			$('#testing').hide();
-			$('#answering').show();
-			document.getElementById('rightAnswer').innerHTML = data['right_answer'];
-			document.getElementById('result').innerHTML = data['result'];
-			    if (data['result'] == 'Your answer is true'){
-				    $('#result').css('color', '#228b22');
-			    }
-			    else {
-				    $('#result').css('color', '#ff0000');
-			    }
-			    document.getElementById('res').innerHTML = data['res'];
-			    document.getElementById('count').innerHTML = data['step'];
-                    }
-            });
-        }
-	function getNextWord() {
-		$.get('ajax/next_word/', function(data) {
-			if (data['stop'] == 0) {
-			    console.info('New word...');
-			    $('#testing').show();
-			    $('#answering').hide();
-			    document.getElementById('word').innerHTML = data['word'];
-			    document.getElementById('var').innerHTML = data['answers'];
-			}
-			else {
-				document.location.href = data['href'];
-			}
-		})
+    <head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<title>Mission</title>
+	<script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'radio_style.css' %}" />
+	{% csrf_token %}
+    </head>
+    <body>
+	<script>
+	    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+	    xhr.setRequestHeader("X-CSRFToken", csrftoken);
 	}
-   </script>
+    }
+});
 
-    <div class='span'>
-		<hr>
-		<p>Progress: <b id='count'></b>
-		<hr>
+function testAnswer() {
+    $.post({
+	url: 'ajax/check_answer/',
+	data: {
+	    'answer': $("input:radio[name='answer']:checked").attr('id'),
+	},
+	dataType: 'json',
+	success:
+	function (data) {
+	    console.info('Right answer...');
+	    $('#testing').hide();
+	    $('#answering').show();
+	    document.getElementById('rightAnswer').innerHTML = data['right_answer'];
+	    document.getElementById('result').innerHTML = data['result'];
+	    if (data['result'] == 'Your answer is true'){
+		$('#result').css('color', '#228b22');
+	    }
+	    else {
+		$('#result').css('color', '#ff0000');
+	    }
+	    document.getElementById('res').innerHTML = data['res'];
+	    document.getElementById('count').innerHTML = data['step'];
+	}
+    });
+}
+function getNextWord() {
+    $.get('ajax/next_word/', function(data) {
+	if (data['stop'] == 0) {
+	    console.info('New word...');
+	    $('#testing').show();
+	    $('#answering').hide();
+	    document.getElementById('word').innerHTML = data['word'];
+	    document.getElementById('var').innerHTML = data['answers'];
+	}
+	else {
+	    document.location.href = data['href'];
+	}
+    })
+}
+	</script>
+
+	<div class='span'>
+	    <hr>
+	    <p>Progress: <b id='count'></b>
+	    <hr>
 	    <h1 id='word'></h1>
-   	    <div id='testing'>
+	    <div id='testing'>
 		<p style='color:#0082fe; font: bold;'>Your answer:<Br>
 		<div id='var'></div>
 		</p>
 		<input type='button' value='Check' onclick='testAnswer()'>
-
 	    </div>
 	    <div id='answering' hidden='true'>
 		<p id='rightAnswer'></p>
 		<p id='result'></p>
 		<input type='button' value='Next' onclick='getNextWord()'>
 	    </div>
-		<hr>
-		<p>Result: <b id='res'>0</b>
-		<hr>
-    </div>
-    <script>getNextWord()</script>
-</body>
+	    <hr>
+	    <p>Result: <b id='res'>0</b>
+	    <hr>
+	</div>
+	<script>getNextWord()</script>
+    </body>
 </html>

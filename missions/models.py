@@ -22,6 +22,8 @@ class Mission(models.Model):
     lang = models.TextField(default='ru')
     mode = models.TextField(default='select')
 
+    dictionary = models.TextField(default='workbook')
+
     @property
     def list_of_words(self):
         ds = self.words[2:-2].split('}, {')
