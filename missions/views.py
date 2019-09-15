@@ -34,7 +34,7 @@ def generate_words(mission):
         for row in r:
             row = {'ru': row[0], 'en': row[1], 'answer': ''}
             dicts.append(row)
-    list_of_words = [dicts[randint(0, len(dicts))]
+    list_of_words = [dicts[randint(0, len(dicts)-1)]
                      for _ in range(mission.count_of_words)]
     log.debug(list_of_words)
     mission.words = str(list_of_words)
