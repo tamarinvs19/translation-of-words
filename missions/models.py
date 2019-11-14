@@ -26,7 +26,7 @@ class Mission(models.Model):
     start_time = models.DateTimeField('start_time', 
             default=timezone.now(), null=True)
     finish_time = models.DateTimeField('finish_time', 
-            default=tiezone.now(), null=True)
+            default=timezone.now(), null=True)
 
     dictionary = models.TextField(default='university')
 
