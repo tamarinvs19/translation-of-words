@@ -22,8 +22,10 @@ class Mission(models.Model):
     result = models.PositiveIntegerField(default=0)
     lang = models.TextField(default='ru')
     mode = models.TextField(default='select')
-    start_time = models.DateTimeField('start_time', default=None, null=True)
-    finish_time = models.DateTimeField('finish_time', default=None, null=True)
+    start_time = models.DateTimeField('start_time', 
+            default=datetime.datetime(2019, 1, 1, 0, 0, 0), null=True)
+    finish_time = models.DateTimeField('finish_time', 
+            default=datetime.datetime(2999, 1, 1, 0, 0, 0), null=True)
 
     dictionary = models.TextField(default='university')
 
