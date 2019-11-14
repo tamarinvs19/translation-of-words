@@ -28,7 +28,7 @@ log.basicConfig(
 
 
 def generate_words(mission):
-    with open(str(mission.dictionary) + '.csv', 'r') as d:
+    with open(f'dicts/{self.dictionary}.csv', 'r') as d:
         r = csv.reader(d)
         dicts = []
         for row in r:
