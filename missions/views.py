@@ -19,24 +19,26 @@ from random import randint
 
 import logging as log
 log.basicConfig(
-    level='DEBUG',
-    # %(asctime)s
-    format='%(name)s  %(levelname)s  %(filename)s  %(funcName)s  --> %(message)s',
-    filename='./trans.log',
-    filemode='w',
-)
+        level='DEBUG',
+        # %(asctime)s
+        format='%(name)s  %(levelname)s  %(filename)s  %(funcName)s  --> %(message)s',
+        filename='./trans.log',
+        filemode='w',
+        )
 
 
 def generate_words(mission):
     with open(f'dicts/{mission.dictionary}.csv', 'r') as d:
         r = csv.reader(d)
-        dicts = []
-        for row in r:
-            row = {'ru': row[0], 'en': row[1], 'answer': ''}
-            dicts.append(row)
-    list_of_words = [dicts[randint(0, len(dicts)-1)]
-                     for _ in range(mission.count_of_words)]
-    log.debug(list_of_words)
+        dicts = [{'ru': row[0], 'en': row[1], 'answer': ''} for r in rows]
+    if len(dicts) < mission.count_of_words:
+        list_of_words = dicts + \
+                [dicts[randint(0, len(dicts)-1)]
+                        for _ in range(mission.count_of_words - len(dicts))]
+    else:
+        list_of_words = [dicts[randint(0, len(dicts)-1)]
+                for _ in range(mission.count_of_words)]
+        log.debug(list_of_words)
     mission.words = str(list_of_words)
 
 
@@ -49,9 +51,9 @@ def menu(request):
             dictionary = form.cleaned_data['dictionary']
 
             mission = Mission.objects.create(lang=lang,
-                                             count_of_words=count_of_words,
-                                             dictionary=dictionary,
-                                             )
+                    count_of_words=count_of_words,
+                    dictionary=dictionary,
+                    )
             mission.save()
             generate_words(mission)
             mission.save()
@@ -63,7 +65,7 @@ def menu(request):
         form = MissionForm(
                 {'lang': 'ru', 'count_of_words': 20, 'dictionary': 'IT'})
 
-    return render(request, 'menu.html', {'form': form})
+        return render(request, 'menu.html', {'form': form})
 
 
 def mission(request, pk, **kwargs):
@@ -108,6 +110,6 @@ def return_results_page(request, pk, **kwargs):
     res = mission.result
     percent = round(100 * res / mission.count_of_words, 1)
     return render(request, 'result.html', {'res': res,
-                                           'all': mission.count_of_words,
-                                           'percent': percent
-                                           })
+        'all': mission.count_of_words,
+        'percent': percent
+        })
