@@ -56,3 +56,18 @@ li.navbar a.active {
     color: white;
     background-color: steelblue;
 }
+
+input[type="button" i] {
+rder: 2px solid;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 150px;
+    margin: 10px;
+    color: mediumvioletred;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    transition: 0.2s;
+
+}
