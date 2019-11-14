@@ -58,7 +58,7 @@ li.navbar a.active {
 }
 
 input[type="button" i] {
-rder: 2px solid;
+    border: 2px solid;
     border-radius: 30px;
     padding: 5px 15px;
     width: 150px;
@@ -69,5 +69,38 @@ rder: 2px solid;
     user-select: none;
     outline: none;
     transition: 0.2s;
+} 
 
+input[type="submit" i] {
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 150px;
+    color: lightseagreen;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    transition: 0.2s;
+} 
+
+select {
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 5px 5px;
+    margin: 10px;
+    color: lightseagreen;
+    /* font-weight: 700; */
 }
+
+input[type="number" i] {
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 150px;
+    color: lightseagreen;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+} 

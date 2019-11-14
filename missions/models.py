@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+import datetime
 from random import randint, shuffle
 import csv
 

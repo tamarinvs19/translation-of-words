@@ -16,6 +16,7 @@ from django.utils.decorators import method_decorator
 
 import csv
 from random import randint
+import datetime
 
 import logging as log
 log.basicConfig(
@@ -55,6 +56,7 @@ def menu(request):
                     count_of_words=count_of_words,
                     dictionary=dictionary,
                     start_time=timezone.now(),
+                    finish_time=timezone.now() + datetime.timedelta(days=100)
                     )
             mission.save()
             generate_words(mission)
