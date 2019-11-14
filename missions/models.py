@@ -24,9 +24,9 @@ class Mission(models.Model):
     lang = models.TextField(default='ru')
     mode = models.TextField(default='select')
     start_time = models.DateTimeField('start_time', 
-            default=None, null=True)
+            default=timezone.now(), null=True)
     finish_time = models.DateTimeField('finish_time', 
-            default=None, null=True)
+            default=tiezone.now(), null=True)
 
     dictionary = models.TextField(default='university')
 
