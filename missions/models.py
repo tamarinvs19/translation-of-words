@@ -50,7 +50,7 @@ class Mission(models.Model):
     def generate_list_of_answeres(self, count):
         answers = []
         answers.append(self.list_of_words[self.step][self.lang])
-        with open(str(self.dictionary) + '.csv', 'r') as d:
+        with open(f'dicts/{self.dictionary}.csv', 'r') as d:
             r = csv.reader(d)
             dicts = []
             for row in r:
