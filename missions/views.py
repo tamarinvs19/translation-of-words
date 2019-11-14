@@ -30,7 +30,7 @@ log.basicConfig(
 def generate_words(mission):
     with open(f'dicts/{mission.dictionary}.csv', 'r') as d:
         r = csv.reader(d)
-        dicts = [{'ru': row[0], 'en': row[1], 'answer': ''} for r in rows]
+        dicts = [{'ru': row[0], 'en': row[1], 'answer': ''} for row in r]
     if len(dicts) < mission.count_of_words:
         list_of_words = dicts + \
                 [dicts[randint(0, len(dicts)-1)]
@@ -49,10 +49,12 @@ def menu(request):
             lang = form.cleaned_data['lang']
             count_of_words = form.cleaned_data['count_of_words']
             dictionary = form.cleaned_data['dictionary']
+            # start_time = form.cleaned_data['start_time']
 
             mission = Mission.objects.create(lang=lang,
                     count_of_words=count_of_words,
                     dictionary=dictionary,
+                    start_time=timezone.now(),
                     )
             mission.save()
             generate_words(mission)
@@ -110,6 +112,7 @@ def return_results_page(request, pk, **kwargs):
     mission.finish_time = timezone.now()
     res = mission.result
     percent = round(100 * res / mission.count_of_words, 1)
+    log.debug([mission.finish_time, mission.start_time])
     return render(request, 'result.html', {'res': res,
         'all': mission.count_of_words,
         'percent': percent,

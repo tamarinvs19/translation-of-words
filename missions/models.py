@@ -58,7 +58,8 @@ class Mission(models.Model):
             for row in r:
                 row = {'ru':row[0], 'en':row[1]}
                 dicts.append(row[self.lang])
-            list_of_num = [randint(0, len(dicts)) for _ in range(count)]
+            list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
+            log.error(list_of_num)
             for l in list_of_num:
                 answers.append(dicts[l])
             a = '<div class="radio-container">'
