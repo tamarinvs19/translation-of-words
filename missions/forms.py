@@ -15,7 +15,8 @@ class MissionForm(forms.Form):
             ('IT', 'IT'),\
             ('workbook', 'workbook',),\
             )
-    lang = forms.CharField(initial='ru / en', label='Language', max_length=2)
+    LANG = (('ru', 'en - ru'), ('en', 'ru - en'))
+    lang = forms.ChoiceField(widget=forms.Select, choices=LANG, label='Language')
     count_of_words = forms.IntegerField(initial='20', label='Count of words')
     dictionary = forms.ChoiceField(widget=forms.Select, choices=DICTIONARY, label='Dictionary')
     start_time = timezone.now()
