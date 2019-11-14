@@ -27,7 +27,8 @@ class Mission(models.Model):
     @property
     def list_of_words(self):
         ds = self.words[2:-2].split('}, {')
-        ds = [dict([[y[1:-1] for y in x.split(': ')] for x in d.split(', ')]) for d in ds]
+        ds = [dict([[y[1:-1] for y in x.split(': ')]\
+                for x in d.split(', ')]) for d in ds]
         return ds
 
     def give_next_word(self):
