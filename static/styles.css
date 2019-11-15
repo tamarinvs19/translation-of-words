@@ -64,7 +64,6 @@ input[type="button" i] {
     width: 150px;
     margin: 10px;
     color: lightseagreen;
-    font-weight: 700;
     text-decoration: none;
     user-select: none;
     outline: none;
@@ -78,7 +77,6 @@ input[type="submit" i] {
     margin: 1px;
     width: 150px;
     color: lightseagreen;
-    font-weight: 700;
     text-decoration: none;
     user-select: none;
     outline: none;
@@ -91,7 +89,6 @@ input[type="number" i] {
     border-radius: 3px;
     padding: 5px 15px;
     color: lightseagreen;
-    font-weight: 700;
     text-decoration: none;
     user-select: none;
     outline: none;
