@@ -56,19 +56,25 @@ class Mission(models.Model):
         answers.append(self.list_of_words[self.step][self.lang])
         with open(f'dicts/{self.dictionary}.csv', 'r') as d:
             r = csv.reader(d)
-            dicts = []
-            for row in r:
-                row = {'ru':row[0], 'en':row[1]}
-                dicts.append(row[self.lang])
-            list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
-            log.error(list_of_num)
-            for l in list_of_num:
-                answers.append(dicts[l])
-            a = '<div class="radio-container">'
-            shuffle(answers)
-            c = count + 1
-            temp = '<div class="form-item radio-btn nth-{c}"><input style="display: none;" type="radio" name="answer" id="{word}"><label for="{word}">{word}</label></div>'
-            for ans in answers:
-                a += temp.format(word=ans, c=c)
-            a += '</div>'
+            log.debug([row for row in r])
+            dicts = [row[0] if self.lang == 'ru' else row[1] \
+                    for row in r]
+        with open('dicts/workbook.csv', 'r') as wb:
+            r = csv.reader(wb)
+            wb_dicts = [row[0] if self.lang == 'ru' else row[1] \
+                    for row in r]
+        dicts += wb_dicts
+        # for row in r:
+        #     row = {'ru':row[0], 'en':row[1]}
+        #     dicts.append(row[self.lang])
+        list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
+        for l in list_of_num:
+            answers.append(dicts[l])
+        a = '<div class="radio-container">'
+        shuffle(answers)
+        c = count + 1
+        temp = '<div class="form-item radio-btn nth-{c}"><input style="display: none;" type="radio" name="answer" id="{word}"><label for="{word}">{word}</label></div>'
+        for ans in answers:
+            a += temp.format(word=ans, c=c)
+        a += '</div>'
         return a

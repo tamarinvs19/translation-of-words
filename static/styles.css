@@ -85,20 +85,22 @@ input[type="submit" i] {
     transition: 0.2s;
 } 
 
-select {
-    border: 2px solid;
-    border-radius: 30px;
-    padding: 5px 5px;
-    margin: 10px;
-    color: lightseagreen;
-    /* font-weight: 700; */
-}
-
 input[type="number" i] {
+    width: 50px;
     border: 2px solid;
     border-radius: 30px;
     padding: 5px 15px;
-    width: 150px;
+    color: lightseagreen;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+} 
+
+select {
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 5px 15px;
     color: lightseagreen;
     font-weight: 700;
     text-decoration: none;
