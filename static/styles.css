@@ -1,7 +1,7 @@
 body {
     background-color: darkgray;
     text-align: center;
-    font-family: Ubuntu;
+    font-family: Carlito;
 }
 
 .span {
@@ -88,7 +88,7 @@ input[type="submit" i] {
 input[type="number" i] {
     width: 50px;
     border: 2px solid;
-    border-radius: 30px;
+    border-radius: 3px;
     padding: 5px 15px;
     color: lightseagreen;
     font-weight: 700;
@@ -99,7 +99,7 @@ input[type="number" i] {
 
 select {
     border: 2px solid;
-    border-radius: 30px;
+    border-radius: 3px;
     padding: 5px 15px;
     color: lightseagreen;
     font-weight: 700;
