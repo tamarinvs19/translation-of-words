@@ -60,7 +60,7 @@ li.navbar a.active {
 input[type="button" i] {
     border: 2px solid;
     border-radius: 30px;
-    padding: 5px 15px;
+    padding: 10px 15px;
     width: 150px;
     margin: 10px;
     color: lightseagreen;
@@ -74,7 +74,7 @@ input[type="button" i] {
 input[type="submit" i] {
     border: 2px solid;
     border-radius: 30px;
-    padding: 5px 15px;
+    padding: 10px 15px;
     margin: 1px;
     width: 150px;
     color: lightseagreen;
