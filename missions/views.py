@@ -112,7 +112,6 @@ def return_results_page(request, pk, **kwargs):
     mission = get_object_or_404(Mission, pk=pk)
     res = mission.result
     percent = round(100 * res / mission.count_of_words, 1)
-    log.debug([mission.finish_time, mission.start_time])
     return render(request, 'result.html', {'res': res,
         'all': mission.count_of_words,
         'percent': percent,
