@@ -23,7 +23,7 @@
 /*.radio-container .radio-btn.nth-6{width: calc(15% - 1.5px);}*/
 .radio-container .radio-btn label{
   background-color: transparent;
-  color: #000;
+  color: #ffffff;
   display: block;
   padding: 6px 12px;
   text-align: center;
@@ -32,5 +32,5 @@
 .radio-container .radio-btn input{display: none;}
 .radio-container .radio-btn input:checked + label{
   background-color: lightseagreen;
-  color: #fff;
+  color: #ffffff;
 }

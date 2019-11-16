@@ -114,5 +114,5 @@ def return_results_page(request, pk, **kwargs):
     return render(request, 'result.html', {'res': res,
         'all': mission.count_of_words,
         'percent': percent,
-        'time': timezone.now() - mission.start_time
+        'time': (timezone.now() - mission.start_time).strftime('%H h %M m %S s')
         })

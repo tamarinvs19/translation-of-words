@@ -1,5 +1,5 @@
 body {
-    background-color: darkgray;
+    background-color: #474A4D;
     text-align: center;
     font-family: Carlito;
 }
@@ -9,11 +9,24 @@ body {
     margin-top: 10px;
     box-sizing: content-box;
     position: relative;
-    border: 10px solid #999999;
+    border: 10px solid #5F5F5F;
     border-radius: 10px;
-    background: #dddddd;
+    background: #37393A;
     padding: 20px;
     width: 300px;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 800px){
+    .span {
+	width: 60%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .span {
+	width: 80%;
+    }
 }
 
 ul.navbar {
@@ -58,6 +71,7 @@ li.navbar a.active {
 }
 
 input[type="button" i] {
+    background: #2D2F30;
     border: 2px solid;
     border-radius: 30px;
     padding: 10px 15px;
@@ -67,10 +81,10 @@ input[type="button" i] {
     text-decoration: none;
     user-select: none;
     outline: none;
-    transition: 0.2s;
 } 
 
 input[type="submit" i] {
+    background: #2D2F30;
     border: 2px solid;
     border-radius: 30px;
     padding: 10px 15px;
@@ -80,10 +94,10 @@ input[type="submit" i] {
     text-decoration: none;
     user-select: none;
     outline: none;
-    transition: 0.2s;
 } 
 
 input[type="number" i] {
+    background: #2D2F30;
     width: 50px;
     border: 2px solid;
     border-radius: 3px;
@@ -95,6 +109,7 @@ input[type="number" i] {
 } 
 
 select {
+    background: #2D2F30;
     border: 2px solid;
     border-radius: 3px;
     padding: 5px 15px;
