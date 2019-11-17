@@ -119,3 +119,9 @@ select {
     user-select: none;
     outline: none;
 } 
+
+input[type=number], input[type=submit] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+}
