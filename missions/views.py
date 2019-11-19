@@ -112,7 +112,8 @@ def return_results_page(request, pk, **kwargs):
     res = mission.result
     percent = round(100 * res / mission.count_of_words, 1)
     return render(request, 'result.html', {'res': res,
-        'all': mission.count_of_words,
-        'percent': percent,
-        'time': (timezone.now() - mission.start_time).strftime('%H h %M m %S s')
-        })
+                                           'all': mission.count_of_words,
+                                           'percent': percent,
+                                           'time': str(timezone.now() - mission.start_time)
+                                           #.strftime('%H h %M m %S s')
+                                           })

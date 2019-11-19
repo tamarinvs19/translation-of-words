@@ -83,7 +83,7 @@ input[type="button" i] {
     outline: none;
 } 
 
-input[type="submit" i] {
+input[type="submit" i], input[type="button"] {
     background: #2D2F30;
     border: 2px solid;
     border-radius: 30px;
@@ -120,7 +120,7 @@ select {
     outline: none;
 } 
 
-input[type=number], input[type=submit], select {
+input, select {
     -webkit-appearance: none;
     -moz-appearance:    none;
     appearance:         none;
