@@ -120,7 +120,7 @@ select {
     outline: none;
 } 
 
-input[type=number], input[type=submit] {
+input[type=number], input[type=submit], select {
     -webkit-appearance: none;
     -moz-appearance:    none;
     appearance:         none;
