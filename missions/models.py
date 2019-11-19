@@ -23,7 +23,7 @@ class Mission(models.Model):
     result = models.PositiveIntegerField(default=0)
     lang = models.TextField(default='ru')
     mode = models.TextField(default='select')
-    start_time = models.DateTimeField('start_time', 
+    start_time = models.DateTimeField('start_time',
             null=True)
 
     dictionary = models.TextField(default='university')
@@ -48,7 +48,6 @@ class Mission(models.Model):
             res = 'true'
         else:
             res = 'false'
-        #self.step += 1
         return res
 
     def generate_list_of_answeres(self, count):
@@ -64,9 +63,6 @@ class Mission(models.Model):
             wb_dicts = [row[0] if self.lang == 'ru' else row[1] \
                     for row in r]
         dicts += wb_dicts
-        # for row in r:
-        #     row = {'ru':row[0], 'en':row[1]}
-        #     dicts.append(row[self.lang])
         list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
         for l in list_of_num:
             answers.append(dicts[l])

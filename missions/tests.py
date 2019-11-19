@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from .models import Mission
+from .views import *
 
 
 class MissionModelTests(TestCase):
@@ -39,16 +40,27 @@ class MissionModelTests(TestCase):
         self.assertEqual(mission.give_next_word(), list_of_words[0])
         self.assertEqual(mission.step, 0)
 
-    def test_check_answer(self):
+    def test_check_answer_1(self):
         list_of_words = [{"en":"abc","ru":"абв;где","answer":""},{"en":"abcd","ru":"абвг","answer":""}]
         mission = Mission(words=str(list_of_words), step=0, lang='ru')
-        self.assertEqual(mission.check_answer(answer='абв'), True)
-        self.assertEqual(mission.step, 1)
+        self.assertEqual(mission.check_answer(answer='абв'), 'true')
         self.assertEqual(mission.list_of_words[0]['answer'], 'абв')
         self.assertEqual(mission.result, 1)
 
+    def test_check_answer_2(self):
+        list_of_words = [{"en":"abc","ru":"абв;где","answer":""},{"en":"abcd","ru":"абвг","answer":""}]
         mission = Mission(words=str(list_of_words), step=0, lang='ru')
-        self.assertEqual(mission.check_answer(answer='fhvb'), False)
-        self.assertEqual(mission.step, 1)
+        self.assertEqual(mission.check_answer(answer='fhvb'), 'false')
         self.assertEqual(mission.list_of_words[0]['answer'], 'fhvb')
         self.assertEqual(mission.result, 0)
+
+
+class ViewsTests(TestCase):
+    def test_format_time_1(self):
+        time = str(datetime.timedelta(days=1, hours=1, minutes=1, seconds=1))
+        self.assertEqual(format_time(time), '1 day, 01h  01m  01s')
+
+    def test_format_time_2(self):
+        time = str(datetime.timedelta(days=0, hours=12, minutes=0, seconds=0))
+        self.assertEqual(format_time(time), '12h  00m  00s')
+

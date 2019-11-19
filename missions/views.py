@@ -107,6 +107,19 @@ def check_answer(request, pk, **kwargs):
     raise Http404
 
 
+def format_time(str_time):
+    days = ''
+    if 'day' in str_time:
+        days, str_time = str_time.split(', ')
+
+    str_time = str_time.split('.')[0]
+    str_time = list(map(int, str_time.split(':')))
+    time = datetime.time(*str_time).strftime('%Hh  %Mm  %Ss')
+    if days == '':
+        return time
+    else:
+        return days + ', ' + time
+
 def return_results_page(request, pk, **kwargs):
     mission = get_object_or_404(Mission, pk=pk)
     res = mission.result
@@ -114,6 +127,6 @@ def return_results_page(request, pk, **kwargs):
     return render(request, 'result.html', {'res': res,
                                            'all': mission.count_of_words,
                                            'percent': percent,
-                                           'time': str(timezone.now() - mission.start_time)
-                                           #.strftime('%H h %M m %S s')
+                                           'time': format_time(
+                                               str(timezone.now() - mission.start_time))
                                            })
