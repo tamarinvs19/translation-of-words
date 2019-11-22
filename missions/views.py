@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 import csv
-from random import randint
+from random import randint, shuffle
 import datetime
 
 import logging as log
@@ -40,6 +40,7 @@ def generate_words(mission):
         list_of_words = [dicts[randint(0, len(dicts)-1)]
                 for _ in range(mission.count_of_words)]
         log.debug(list_of_words)
+    shuffle(list_of_words)
     mission.words = str(list_of_words)
 
 
