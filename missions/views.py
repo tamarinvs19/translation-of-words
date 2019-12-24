@@ -131,3 +131,20 @@ def return_results_page(request, pk, **kwargs):
                                            'time': format_time(
                                                str(timezone.now() - mission.start_time))
                                            })
+
+def get_answers(request, **kwargs):
+    with open('dicts/1.txt', 'r') as f:
+        anss = {}
+        for line in f.readlines():
+            if '. ' in line:
+                ind = line.index('. ')
+                n, ans = line[:ind], line[ind:]
+                anss[n] = ans
+    num = request.GET.get('answer', None)
+    num = str(num)
+
+    return render(request, 'result.html', {'res': num,
+                                           'all': anss[num],
+                                           'percent': 0,
+                                           'time': 0
+                                           })
