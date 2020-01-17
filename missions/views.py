@@ -132,19 +132,17 @@ def return_results_page(request, pk, **kwargs):
                                                str(timezone.now() - mission.start_time))
                                            })
 
-def get_answers(request, **kwargs):
-    with open('dicts/1.txt', 'r') as f:
-        anss = {}
-        for line in f.readlines():
-            if '. ' in line:
-                ind = line.index('. ')
-                n, ans = line[:ind], line[ind:]
-                anss[n] = ans
-    num = request.GET.get('answer', None)
-    num = str(num)
-
-    return render(request, 'result.html', {'res': num,
-                                           'all': anss[num],
+def save_data(request, **kwargs):
+    if request.method == "POST":
+        info = request.POST.get('info', None)
+        with open('dicts/data', 'a') as f:
+            print(info, file=f)
+        return None
+    elif request.method == "GET":
+        with open('dicts/data', 'r') as f:
+            data = f.readlines()
+        return render(request, 'result.html', {'res': 1,
+                                           'all': ''.join(data),
                                            'percent': 0,
                                            'time': 0
                                            })
