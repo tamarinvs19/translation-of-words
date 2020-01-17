@@ -133,12 +133,10 @@ def return_results_page(request, pk, **kwargs):
                                            })
 
 def save_data(request, **kwargs):
-    if request.method == "POST":
-        info = request.POST.get('info', None)
+    if request.method == "GET":
+        info = request.GET.get('info', None)
         with open('dicts/data', 'a') as f:
             print(info, file=f)
-        return None
-    elif request.method == "GET":
         with open('dicts/data', 'r') as f:
             data = f.readlines()
         return render(request, 'result.html', {'res': 1,
