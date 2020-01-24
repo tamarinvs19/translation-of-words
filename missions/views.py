@@ -140,7 +140,7 @@ def save_data(request, **kwargs):
         with open('dicts/data', 'r') as f:
             data = f.readlines()
         return render(request, 'result.html', {'res': 1,
-                                           'all': ''.join(data),
+                                           'all': '\n'.join(data),
                                            'percent': 0,
                                            'time': 0
                                            })
