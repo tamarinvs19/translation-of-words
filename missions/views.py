@@ -140,6 +140,7 @@ def get_answers(request, **kwargs):
                 ind = line.index('. ')
                 n, ans = line[:ind], line[ind:]
                 anss[n] = ans
+
     num = request.GET.get('answer', None)
     num = str(num)
 
