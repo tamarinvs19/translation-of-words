@@ -17,6 +17,7 @@ from django.utils.decorators import method_decorator
 import csv
 from random import randint, shuffle
 import datetime
+from os import popen
 
 import logging as log
 log.basicConfig(
@@ -44,6 +45,10 @@ def generate_words(mission):
     mission.words = str(list_of_words)
 
 
+def gen_links():
+    files = popen("ls static/links -1").read().split('\n')
+    return  files
+
 def menu(request):
     if request.method == 'POST':
         form = MissionForm(request.POST)
@@ -61,6 +66,7 @@ def menu(request):
             generate_words(mission)
             mission.save()
             context = {'mission': mission}
+            print(get_links())
             addr = '/missions/' + str(mission.id) + '/'
             # return render(request, 'mission.html', context)
             return HttpResponseRedirect(addr, context)
@@ -68,7 +74,7 @@ def menu(request):
         form = MissionForm(
                 {'lang': 'en', 'count_of_words': 20, 'dictionary': 'list_uni'})
 
-        return render(request, 'menu.html', {'form': form})
+        return render(request, 'menu.html', {'form': form, 'links': gen_links()})
 
 
 def mission(request, pk, **kwargs):

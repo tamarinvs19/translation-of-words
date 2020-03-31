@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
-    <title>Menu</title>
-</head>
-<body>
-    <div class="span">
-	<h1>Menu</h1>
-	<hr>
-	<h2>Маска: </h2><a target="_blank" href=https://yadi.sk/d/69k86bcFOc1i2g>сcылка</a>
-	<hr>
-	<h2>Охотники за привидениями: </h2><a target="_blank" href=https://yadi.sk/d/cVzQdDTzOwUK4Q>ссылка</a>
-	<hr>
-	<h2>Эйс Вентура: </h2><a target="_blank" href=https://yadi.sk/d/zdJ4J0n3Kqgysw>ссылка</a>
-	<hr>
-	<h2>Брюс Всемогущий: </h2><a target="_blank" href=https://yadi.sk/d/mxUnCwZMixxsJA>ссылка</a>
-	<hr>
-	<form action="/missions/menu/" method='post'>
-	    {% csrf_token %}
-	    {{ form.as_p }}
+    <head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+	<title>Menu</title>
+    </head>
+    <body>
+	<div class="span">
+	    <h1>Menu</h1>
 	    <hr>
-	    <input type='submit' value='Start' />
-	</form>
-    </div>
-</body>
+	    <ul>
+		{% for link in links %}
+		<li><a href="/static/links/{{ link }}">{{link}}</a></li>
+		{% endfor %}
+	    </ul>
+	    <hr>
+	    <form action="/missions/menu/" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<hr>
+		<input type='submit' value='Start' />
+	    </form>
+	</div>
+    </body>
 </html>
