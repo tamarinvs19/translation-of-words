@@ -46,7 +46,7 @@ def generate_words(mission):
 
 
 def gen_links():
-    files = popen("ls --sort=time static/links -1").read().split('\n')
+    files = popen("ls static/links -1").read().split('\n')
     return  files
 
 def menu(request):
