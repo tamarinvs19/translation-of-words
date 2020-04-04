@@ -66,7 +66,6 @@ def menu(request):
             generate_words(mission)
             mission.save()
             context = {'mission': mission}
-            print(get_links())
             addr = '/missions/' + str(mission.id) + '/'
             # return render(request, 'mission.html', context)
             return HttpResponseRedirect(addr, context)
