@@ -10,12 +10,12 @@
 	<div class="span">
 	    <h1>Menu</h1>
 	    <hr>
-	    <ul>
-		{% for link in links %}
-		<li><a href="/static/links/{{ link }}">{{link}}</a></li>
-		{% endfor %}
-	    </ul>
-	    <hr>
+	    {# <ul> #}
+		{# {% for link in links %} #}
+		{# <li><a href="/static/links/{{ link }}">{{link}}</a></li> #}
+		{# {% endfor %} #}
+	    {# </ul> #}
+	    {# <hr> #}
 	    <form action="/missions/menu/" method='post'>
 		{% csrf_token %}
 		{{ form.as_p }}
