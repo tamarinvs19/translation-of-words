@@ -6,6 +6,7 @@ from .models import Mission
 
 class MissionForm(forms.Form):
     DICTIONARY = (\
+            ('She-Ra_Seria1', 'She-Ra_Seria1'),\
             ('list_uni', 'list_uni'),\
             ('weather', 'weather'),\
             ('advertising', 'advertising'),\
