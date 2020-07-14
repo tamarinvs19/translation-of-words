@@ -67,7 +67,13 @@ class Mission(models.Model):
             dicts += wb_dicts
 
         log.debug(dicts)
-        list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
+        list_of_num = []
+        while len(list_of_num) < count:
+            n = randint(0, len(dicts)-1)
+            while n in list_of_num:
+                n = randint(0, len(dicts)-1)
+            list_of_num.append(n)
+
         log.debug(list_of_num)
         for l in list_of_num:
             answers.append(dicts[l])

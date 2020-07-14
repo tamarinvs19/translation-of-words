@@ -91,7 +91,10 @@ def next_word(request, pk, **kwargs):
                     str(mission.id) + '/results/'}
         else:
             word = mission.give_next_word()
-            answers = mission.generate_list_of_answeres(5)
+            if mission.local:
+                answers = mission.generate_list_of_answeres(10)
+            else:
+                answers = mission.generate_list_of_answeres(5)
             lang = {'ru': 'en', 'en': 'ru'}
             lang = lang[mission.lang]
             data = {'stop': 0, 'word': word[lang], 'answers': answers}
