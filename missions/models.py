@@ -25,6 +25,7 @@ class Mission(models.Model):
     mode = models.TextField(default='select')
     start_time = models.DateTimeField('start_time',
             null=True)
+    local = models.BooleanField(default=False)
 
     dictionary = models.TextField(default='university')
 
@@ -51,19 +52,23 @@ class Mission(models.Model):
         return res
 
     def generate_list_of_answeres(self, count):
+        dicts = []
         answers = []
         answers.append(self.list_of_words[self.step][self.lang])
         with open(f'dicts/{self.dictionary}.csv', 'r') as d:
             r = csv.reader(d)
-            log.debug([row for row in r])
-            dicts = [row[0] if self.lang == 'ru' else row[1] \
-                    for row in r]
-        with open('dicts/workbook.csv', 'r') as wb:
-            r = csv.reader(wb)
-            wb_dicts = [row[0] if self.lang == 'ru' else row[1] \
-                    for row in r]
-        dicts += wb_dicts
+            dicts += [row[0] if self.lang == 'ru' else row[1] for row in r]
+
+        if not self.local:
+            with open('dicts/workbook.csv', 'r') as wb:
+                r = csv.reader(wb)
+                wb_dicts = [row[0] if self.lang == 'ru' else row[1] \
+                        for row in r]
+            dicts += wb_dicts
+
+        log.debug(dicts)
         list_of_num = [randint(0, len(dicts)-1) for _ in range(count)]
+        log.debug(list_of_num)
         for l in list_of_num:
             answers.append(dicts[l])
         a = '<div class="radio-container">'

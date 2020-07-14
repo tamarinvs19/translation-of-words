@@ -6,6 +6,7 @@ from .models import Mission
 
 class MissionForm(forms.Form):
     DICTIONARY = (\
+            ('fantastisch', 'fantastisch'),\
             ('She-Ra_Seria1', 'She-Ra_Seria1'),\
             ('list_uni', 'list_uni'),\
             ('weather', 'weather'),\
@@ -17,7 +18,7 @@ class MissionForm(forms.Form):
             ('IT', 'IT'),\
             ('workbook', 'workbook',),\
             )
-    LANG = (('ru', 'en - ru'), ('en', 'ru - en'))
+    LANG = (('ru', 'to Rus'), ('en', 'from Rus'))
     lang = forms.ChoiceField(widget=forms.Select, choices=LANG, label='Language')
     count_of_words = forms.IntegerField(initial='20', label='Count of words')
     dictionary = forms.ChoiceField(widget=forms.Select, choices=DICTIONARY, label='Dictionary')

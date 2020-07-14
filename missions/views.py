@@ -62,7 +62,10 @@ def menu(request):
                     dictionary=dictionary,
                     start_time=timezone.now(),
                     )
+            if dictionary == 'fantastisch':
+                mission.local = True
             mission.save()
+
             generate_words(mission)
             mission.save()
             context = {'mission': mission}
@@ -70,8 +73,8 @@ def menu(request):
             # return render(request, 'mission.html', context)
             return HttpResponseRedirect(addr, context)
     else:
-        form = MissionForm(
-                {'lang': 'en', 'count_of_words': 20, 'dictionary': 'list_uni'})
+        form = MissionForm()
+                # {'lang': 'en', 'count_of_words': 20, 'dictionary': ''})
 
         return render(request, 'menu.html', {'form': form, 'links': gen_links()})
 
@@ -154,3 +157,4 @@ def get_answers(request, **kwargs):
                                            'percent': 0,
                                            'time': 0
                                            })
+
