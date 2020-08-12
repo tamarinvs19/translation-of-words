@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
-    <title>Menu</title>
-</head>
-<body>
-    <div class="span">
-	    <h1>Results</h1>
-	    <h3>{{percent}} %</h3>
-	    <p>{{res}} of {{all}}</p>
-	    <h3>Time: {{time}}</h3>
-	    <hr>
-            <input id="goMenu" type="button" onClick="window.location.href='/missions/menu/'" value="Menu">
-    </div>
+	<head>
+		{% load static %}
+		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+		<title>Menu</title>
+	</head>
+	<body>
+		<div class="span">
+			<h1>Results</h1>
+			<h3>{{percent}} %</h3>
+			<p>{{res}} of {{all}}</p>
+			<h3>Time: {{time}}</h3>
+			<hr>
+			<input id="goMenu" type="button" onClick="window.location.href='/missions/menu/'" value="Menu">
+		</div>
 
 

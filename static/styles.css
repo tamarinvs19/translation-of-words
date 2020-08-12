@@ -1,127 +1,153 @@
 body {
-    background-color: #474A4D;
-    text-align: center;
-    font-family: Carlito;
+	background-color: #474A4D;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.5em;
 }
 
 .span {
-    margin: auto;
-    margin-top: 10px;
-    box-sizing: content-box;
-    position: relative;
-    border: 10px solid #5F5F5F;
-    border-radius: 10px;
-    background: #37393A;
-    padding: 20px;
-    width: 300px;
-    color: #ffffff;
-}
-
-@media screen and (max-width: 800px){
-    .span {
-	width: 60%;
-    }
-}
-
-@media screen and (max-width: 400px){
-    .span {
-	width: 80%;
-    }
+	margin: auto;
+	margin-top: 10px;
+	box-sizing: content-box;
+	position: relative;
+	border: 10px solid #5F5F5F;
+	border-radius: 10px;
+	background: #37393A;
+	padding: 20px;
+	color: #ffffff;
 }
 
 ul.navbar {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-    z-index: 1;
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #e7e7e7;
+	background-color: #f3f3f3;
+	z-index: 1;
 }
 
 li.navbar {
-    float: left;
-    border-right: 1px solid #bbb;
+	float: left;
+	border-right: 1px solid #bbb;
 }
 
 li:last-child.navbar {
-    border-right: none;
-    border-left: 1px solid #bbb;
-    float: right;
+	border-right: none;
+	border-left: 1px solid #bbb;
+	float: right;
 }
 
 li.navbar a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+	display: block;
+	color: #666;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 li.navbar a:hover:not(.active) {
-    background-color: #ddd;
+	background-color: #ddd;
 }
 
 li.navbar a.active {
-    color: white;
-    background-color: steelblue;
+	color: white;
+	background-color: steelblue;
 }
 
 input[type="button" i] {
-    background: #2D2F30;
-    border: 2px solid;
-    border-radius: 30px;
-    padding: 10px 15px;
-    width: 150px;
-    margin: 10px;
-    color: lightseagreen;
-    text-decoration: none;
-    user-select: none;
-    outline: none;
-} 
+	background: #2D2F30;
+	border: 2px solid;
+	border-radius: 30px;
+	padding: 10px 15px;
+	width: 150px;
+	margin: 10px;
+	color: lightseagreen;
+	text-decoration: none;
+	user-select: none;
+	outline: none;
+}
 
 input[type="submit" i], input[type="button"] {
-    background: #2D2F30;
-    border: 2px solid;
-    border-radius: 30px;
-    padding: 10px 15px;
-    margin: 1px;
-    width: 150px;
-    color: lightseagreen;
-    text-decoration: none;
-    user-select: none;
-    outline: none;
-} 
+	background: #2D2F30;
+	border: 2px solid;
+	border-radius: 30px;
+	padding: 10px 15px;
+	margin: 1px;
+	width: 150px;
+	color: lightseagreen;
+	text-decoration: none;
+	user-select: none;
+	outline: none;
+}
 
 input[type="number" i] {
-    background: #2D2F30;
-    width: 50px;
-    border: 2px solid;
-    border-radius: 3px;
-    padding: 5px 15px;
-    color: lightseagreen;
-    text-decoration: none;
-    user-select: none;
-    outline: none;
-} 
+	background: #2D2F30;
+	width: 50px;
+	border: 2px solid;
+	border-radius: 3px;
+	padding: 5px 15px;
+	color: lightseagreen;
+	text-decoration: none;
+	user-select: none;
+	outline: none;
+}
 
 select {
-    background: #2D2F30;
-    border: 2px solid;
-    border-radius: 3px;
-    padding: 5px 15px;
-    color: lightseagreen;
-    font-weight: 700;
-    text-decoration: none;
-    user-select: none;
-    outline: none;
-} 
+	background: #2D2F30;
+	border: 2px solid;
+	border-radius: 3px;
+	padding: 5px 15px;
+	color: lightseagreen;
+	text-decoration: none;
+	user-select: none;
+	outline: none;
+}
 
 input, select {
-    -webkit-appearance: none;
-    -moz-appearance:    none;
-    appearance:         none;
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+	appearance:         none;
 }
+
+@media (min-width: 600px) and (max-width: 1023px) {
+	.span {
+		width: 70%;
+	}
+}
+
+@media (min-width: 1024px) {
+	.span {
+		width: 500px;
+	}
+}
+
+@media all and (orientation:portrait) {
+	.span {
+		width: 90%;
+		font-size: 2.5em;
+	}
+	input[type="submit"] {
+		font-size: 1em;
+		width: 300px;
+		border-radius: 50px;
+	}
+	input[type="button"] {
+		font-size: 0.85em;
+		width: 200px;
+	}
+	input[type="number"] {
+		font-size: 0.85em;
+		width: 120px;
+		border-radius: 50px;
+	}
+
+	select {
+		font-size: 1em;
+		border-radius: 5px;
+	}
+}
+
